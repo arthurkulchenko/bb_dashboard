@@ -1,24 +1,33 @@
-# README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**system info**
 
-Things you may want to cover:
+* Ruby version is 2.5.1p57 (2018-03-29 revision 63029)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
+* How to run the test suite - rspec, jest
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## TODO
 
-* ...
+Next functionality is should be met (It should have):
+
+* dashboard with all emploeeys
+
+* integration with slack (executable commands in slack)
+
+* system of cross-apps notifications (in order to be able figure out where is some of the emploees)
+
+* command like '/find @user' in slack and the responce have to be something like:
+   * Is employee in vacation right now?
+   * When employees vacation is runing out?
+
+* It should send notification to manager*
+что через 2 недели Паша Сон пойдет в отпуск
+
+* function which allow employee to execute command in slack like '/off' in order to make a record about his day off
+
+* In case emplyee got day off it must show the way he could be reached for example 'whatsapp' or else
+
+
+*- what kind of notification and to whom and which way?
