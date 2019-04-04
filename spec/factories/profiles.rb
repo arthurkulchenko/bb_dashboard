@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :profile do
     employee { create(:employee) }
@@ -5,9 +7,9 @@ FactoryBot.define do
     birthday { Faker::Movies::BackToTheFuture.date }
     full_name { Faker::TvShows::AquaTeenHungerForce.character }
     contacts do
-      %w(google facebook twitter github).map{|provider|
+      %w[google facebook twitter github].map do |provider|
         "#{provider}@#{Faker::Omniauth.send(provider.to_sym)[:uid]}"
-      }.join("; ")
+      end.join('; ')
     end
   end
 end
