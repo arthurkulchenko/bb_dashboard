@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'sidekiq'
 gem 'paper_trail'
+gem "rolify"
 
 # gem 'sass-rails', '~> 5.0'
 # gem 'uglifier', '>= 1.3.0'

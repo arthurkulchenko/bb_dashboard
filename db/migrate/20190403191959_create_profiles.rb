@@ -4,7 +4,6 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.belongs_to :employee, foreign_key: true
       t.string :position
       t.string :birthday
-      t.string :full_name
       t.string :contacts
 
       t.timestamps
