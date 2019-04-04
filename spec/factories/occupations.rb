@@ -1,8 +1,13 @@
 FactoryBot.define do
+
   factory :occupation do
-    employee { nil }
-    kind { "MyString" }
-    from { "" }
-    to { "2019-04-03 21:21:27" }
+    transient do
+      date { Faker::Movies::BackToTheFuture.date }
+    end
+
+    employee { create(:employee) }
+    reason { "MyString" }
+    from { date }
+    to { date + rund(4).weeks }
   end
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :employee do
-    department { nil }
+    department { create(:department) }
   end
 end

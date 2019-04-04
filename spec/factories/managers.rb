@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :manager do
-    department { nil }
-    full_name { nil }
+    department { create(:department) }
+    full_name { Faker::Movies::LordOfTheRings.character }
   end
+
 end

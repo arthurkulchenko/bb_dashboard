@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :department do
-    city { "MyString" }
-    seo { "MyString" }
+    city { Faker::Movies::StarWars.planet }
+    seo { Faker::TvShows::Simpsons.character }
   end
 end
