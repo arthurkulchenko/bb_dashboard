@@ -1,13 +1,150 @@
+# require: rubocop-rspec
+
 AllCops:
+  DisplayCopNames: true
+  StyleGuideCopsOnly: false
+  TargetRubyVersion: 2.4
   Exclude:
-    - 'vendor/**/*'
-    - 'spec/fixtures/**/*'
-    - 'tmp/**/*'
-    - 'db/**/*'
-    - 'spec/**/*'
-    - 'node_modules/**/*'
-    - 'config/**/*'
-    - 'bin/*'
-    - 'Rakefile'
+    - db/**/*
+    - script/**/*
+    - bin/**/*
+    - vendor/**/*
+    - docker/**/*
+    - tmp/**/*
+    - spec/fixtures/**/*
+    - config/initializers/**/*
+    - config/environments/**/*
+    - config/application.rb
+    - ./Gemfile
+    - ./Rakefile
+    - ./config.ru
+    - ./node_modules/**/*
+    - csv_reports/**/*
+
+Rails:
+  Enabled: true
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
 Documentation:
   Enabled: false
+
+Layout/TrailingBlankLines:
+  Enabled: false
+
+Layout/MultilineBlockLayout:
+  Exclude:
+    - spec/**/*
+
+Layout/IndentHash:
+  Exclude:
+    - spec/**/*
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - spec/**/*
+
+Style/MixinUsage:
+  Exclude:
+    - spec/**/*
+
+Style/StructInheritance:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    '%i':   '[]'
+    '%I':   '[]'
+    '%r':   '{}'
+    '%w':   '[]'
+    '%W':   '[]'
+
+Style/FormatStringToken:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 120
+  Exclude:
+    - spec/**/*
+    - features/**/*
+    - app/mailers/notifications_summary_mailer.rb
+    - app/controllers/concerns/notifications_actions.rb
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 20
+  Exclude:
+    - spec/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - lib/tasks/**/*
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/services/exports/planned_hotels/base_builder.rb
+    - app/mailers/notifications_summary_mailer.rb
+    - app/controllers/concerns/notifications_actions.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/mailers/notifications_summary_mailer.rb
+    - app/controllers/concerns/notifications_actions.rb
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
+# AllCops:
+#   Exclude:
+#     - 'vendor/**/*'
+#     - 'spec/fixtures/**/*'
+#     - 'tmp/**/*'
+#     - 'db/**/*'
+#     - 'spec/**/*'
+#     - 'node_modules/**/*'
+#     - 'config/**/*'
+#     - 'bin/*'
+#     - 'Rakefile'
+# Documentation:
+#   Enabled: false
