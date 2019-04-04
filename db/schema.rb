@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 2019_04_04_074646) do
 
   create_table "occupations", force: :cascade do |t|
     t.bigint "employee_id"
-    t.string "reason"
-    t.datetime "from"
-    t.datetime "to"
+    t.string "reason", null: false
+    t.datetime "from", null: false
+    t.datetime "to", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_occupations_on_employee_id"

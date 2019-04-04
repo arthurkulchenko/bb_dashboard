@@ -6,8 +6,8 @@ FactoryBot.define do
     end
 
     employee { create(:employee) }
-    reason { "MyString" }
+    reason {%w(vacation illness day_of assignment)[rand(3)]}
     from { date }
-    to { date + rund(4).weeks }
+    to { date + rand(13).days }
   end
 end

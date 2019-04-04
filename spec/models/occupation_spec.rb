@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe Occupation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  %w(reason from to).each { |col| it { should validate_presence_of col } }
 end
