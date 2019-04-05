@@ -1,0 +1,5 @@
+.col-md-6.offset-md-3
+  %table
+    - @employees.each do |e| 
+      %tr
+        %td= render e

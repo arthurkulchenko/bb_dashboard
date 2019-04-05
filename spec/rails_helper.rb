@@ -32,6 +32,11 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+Capybara.configure do |config|
+  config.javascript_driver = :selenium
+  config.ignore_hidden_elements = false
+end
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -39,6 +44,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+
+  config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

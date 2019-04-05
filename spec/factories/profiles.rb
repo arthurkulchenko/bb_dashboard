@@ -5,7 +5,6 @@ FactoryBot.define do
     employee { create(:employee) }
     position { Faker::Company.profession }
     birthday { Faker::Movies::BackToTheFuture.date }
-    full_name { Faker::TvShows::AquaTeenHungerForce.character }
     contacts do
       %w[google facebook twitter github].map do |provider|
         "#{provider}@#{Faker::Omniauth.send(provider.to_sym)[:uid]}"
