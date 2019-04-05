@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe DashboardController, type: :controller do
-
   describe "GET #index" do
     before { get :index }
 
@@ -13,5 +12,4 @@ RSpec.describe DashboardController, type: :controller do
       expect(assigns(:employees)).to eq Employee.all
     end
   end
-
 end

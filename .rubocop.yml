@@ -12,6 +12,7 @@ AllCops:
     - docker/**/*
     - tmp/**/*
     - spec/fixtures/**/*
+    - spec/acceptance/**/*
     - config/initializers/**/*
     - config/environments/**/*
     - config/application.rb
