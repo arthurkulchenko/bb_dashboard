@@ -1,4 +1,4 @@
-feature 'check dashboard', '
+feature 'Dashboard page', '
   In order to figure out where is someone
   As common guest
   I want to be able see a table of employees
