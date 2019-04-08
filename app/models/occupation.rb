@@ -6,8 +6,4 @@ class Occupation < ApplicationRecord
   validates :reason, :from, :to, presence: true
 
   enum reason: %i[vacation illness day_off assignment]
-
-  def self.prepare
-    pluck(:reason, :to).map { |e| "#{e[0]} till #{e[1].strftime('%B %d')} " }.join('/')
-  end
 end

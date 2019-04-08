@@ -15,6 +15,7 @@ class Employee < ApplicationRecord
   }, class_name: 'Occupation'
 
   scope :with_occupations_on_this_week, lambda {
-    left_joins(:occupations_for_this_week).select('employees.*, occupations.from, occupations.to')
+    left_joins(:occupations_for_this_week)
+    .select('employees.*, occupations.from, occupations.to, occupations.reason')
   }
 end
