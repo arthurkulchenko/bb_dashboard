@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'dashboard/index', as: 'dashboard'
+  root 'dashboard#index'
+
   namespace :admin do
     devise_for :root_users
   end

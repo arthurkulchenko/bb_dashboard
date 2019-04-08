@@ -8,10 +8,26 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 25.times do
-  e = Employee.create(full_name: Faker::Movies::LordOfTheRings.character)
+  e = Employee.create(full_name: Faker::TvShows::StarTrek.character)
   e.create_profile(
     position: Faker::Company.profession,
     birthday: Faker::Movies::BackToTheFuture.date,
     contacts: Faker::Omniauth.github[:uid]
+  )
+end
+
+25.times do
+  e = Employee.create(full_name: Faker::TvShows::StarTrek.character)
+  e.create_profile(
+    position: Faker::Company.profession,
+    birthday: Faker::Movies::BackToTheFuture.date,
+    contacts: Faker::Omniauth.github[:uid]
+  )
+  @from = Faker::Time.between(DateTime.now - 21, DateTime.now + 22)
+  @to = @from + rand(13).days
+  e.occupations.create!(
+    reason: %w[vacation illness day_off assignment][rand(3)],
+    from: @from,
+    to: @to
   )
 end

@@ -3,11 +3,11 @@
 FactoryBot.define do
   factory :occupation do
     transient do
-      date { Faker::Movies::BackToTheFuture.date }
+      date { Faker::Time.between(DateTime.now.in_time_zone - 21, DateTime.now.in_time_zone + 22) }
     end
 
     employee { create(:employee) }
-    reason { %w[vacation illness day_of assignment][rand(3)] }
+    reason { %w[vacation illness day_off assignment][rand(3)] }
     from { date }
     to { date + rand(13).days }
   end
