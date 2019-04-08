@@ -3,47 +3,18 @@
 class Employee < ApplicationRecord
   rolify
   has_one :profile
-  has_many :occupations, lambda {
-                           where(
-                             'occupations.from > ? AND occupations.to < ? OR
-                              occupations.from < ? AND occupations.to > ? AND occupations.to < ? OR
-                              occupations.from > ? AND occupations.to > ?',
-                             Time.now.in_time_zone.at_beginning_of_week,
-                             Time.now.in_time_zone.at_end_of_week,
-                             Time.now.in_time_zone.at_beginning_of_week,
-                             Time.now.in_time_zone.at_beginning_of_week,
-                             Time.now.in_time_zone.at_end_of_week,
-                             Time.now.in_time_zone.at_beginning_of_week,
-                             Time.now.in_time_zone.at_end_of_week
-                           )
-                         }
+  has_many :occupations
+  has_many :occupations_for_this_week, lambda {
+    where(
+      '(occupations.from BETWEEN :start_time AND :end_time) OR
+       (occupations.to BETWEEN :start_time AND :end_time) OR
+       (occupations.from < :start_time AND occupations.to > :end_time)',
+      start_time: Time.now.in_time_zone.at_beginning_of_week,
+      end_time: Time.now.in_time_zone.at_end_of_week
+    )
+  }, class_name: 'Occupation'
 
   scope :with_occupations_on_this_week, lambda {
-    includes(:occupations).left_outer_joins(:occupations)
-    # joins(
-    #   "LEFT OUTER JOIN occupations
-    #      ON employees.id = occupations.employee_id
-    #      WHERE
-    #      occupations.from < '#{Time.now.at_beginning_of_week}'
-
-    #      "
-    # )
+    left_joins(:occupations_for_this_week).select('employees.*, occupations.from, occupations.to')
   }
-
-  # def self.with_occupations_on_this_week
-  #   includes(:occupations).joins(
-  #     "LEFT OUTER JOIN occupations
-  #        ON employees.id = occupations.employee_id
-  #        WHERE
-  #        occupations.from < '#{Time.now.at_beginning_of_week}'
-
-  #        "
-  #     # AND
-  #     # occupations.to > '#{Time.now.at_end_of_week}'
-  #     # occupations.id IS NOT NULL
-  #   )
-  # end
 end
-
-# .joins("LEFT OUTER JOIN occupations ON employees.id = occupations.employee_id
-# WHERE occupations.from > '#{Time.now.at_beginning_of_week}' AND occupations.to < '#{Time.now.at_end_of_week}' ")

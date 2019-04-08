@@ -11,5 +11,5 @@
     - @employees.each do |e| 
       %tr
         %td= e.full_name
-        %td= e.occupations.empty? ? "should be on work" : e.occupations.prepare
+        %td= DashboardHelper.occupation_pretty_format e
         %td= "e.profile.contacts"
